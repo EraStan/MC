@@ -9,12 +9,16 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: server-test
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: remove old jdk
+        run: |
+          dpkg --list | grep openjdk      
 
       - name: Setup JDK
         run: |
