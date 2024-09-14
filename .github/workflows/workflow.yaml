@@ -22,8 +22,9 @@ jobs:
 
       - name: Setup JDK
         run: |
+          source env
           sudo apt-get update
-          sudo apt-get install -y openjdk-17-jre-headless
+          sudo apt-get install -y ${java_version}
 
 #      - name: Setup screen
 #        run: sudo apt-get install -y screen
@@ -60,7 +61,10 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Push to Dockerhub
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
+        run: source env
         with:
+          build-args:
+            - JAVA_VERSION=${java_version}
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:1.19.1
+          tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:${server_version}-${{ github.sha }}
