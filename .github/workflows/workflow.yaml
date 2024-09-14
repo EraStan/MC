@@ -18,7 +18,8 @@ jobs:
 
       - name: remove old jdk
         run: |
-          dpkg --list | grep openjdk      
+          location=$(which java)
+          sudo rm -rf $location
 
       - name: Setup JDK
         run: |
@@ -34,7 +35,7 @@ jobs:
       - name: run server
         run: |
           cd server
-          ./start.sh
+          sudo bash start.sh
 
 
 #      - name: Login in Dockerhub
