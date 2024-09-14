@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup JDK
         run: |
-          source env
+          source vars
           sudo apt-get update
           sudo apt-get install -y ${java_version}
 
@@ -62,9 +62,9 @@ jobs:
 
       - name: Push to Dockerhub
         uses: docker/build-push-action@v6
-        env:
-          java_version: ${{ env.java_version }}
-          server_version: ${{ env.server_version }}
+        vars:
+          java_version: ${{ vars.java_version }}
+          server_version: ${{ vars.server_version }}
         with:
           build-args:
             JAVA_VERSION=${java_version}
