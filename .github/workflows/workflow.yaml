@@ -44,7 +44,7 @@ jobs:
           sudo chmod +x server/start.sh
           sudo chmod +x ./test_server.sh
           cd server
-          ./start.sh
+          nohup ./start.sh > output.log 2>&1 &
           sleep 3
           ss -tnlp
           ps aux | grep fabric-server-launch
