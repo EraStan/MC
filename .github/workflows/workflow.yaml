@@ -36,6 +36,8 @@ jobs:
 
       - name: run server
         run: |
+          sudo chmod +x ./start.sh
+          sudo chmod +x ./test_server.sh
           nohup ./start.sh > output.log 2>&1 &
           ./test_server.sh
 #          screen -dmS server ./start.sh
