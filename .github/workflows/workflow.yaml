@@ -34,17 +34,7 @@ jobs:
       - name: run server
         run: |
           cd server
-          sudo timeout -s SIGKILL 100 bash start.sh
-          EXIT_CODE=$?
-          if [ $EXIT_CODE -eq 124 ]; then
-            echo "Script timed out (exit code 124), but it's considered a success."
-            exit 0
-          elif [ $EXIT_CODE -eq 137 ]; then
-            echo "Script killed by SIGKILL (exit code 137), but it's considered a success."
-            exit 0
-          else
-            echo "Script failed with exit code $EXIT_CODE."
-            exit $EXIT_CODE
+          sudo timeout -s SIGTERM 100 bash start.sh
 
 #      - name: Login in Dockerhub
 #        uses: docker/login-action@v3
