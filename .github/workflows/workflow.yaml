@@ -67,6 +67,6 @@ jobs:
           server_version: ${{ env.server_version }}
         with:
           build-args:
-            - JAVA_VERSION=${java_version}
+            JAVA_VERSION=${java_version}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:${server_version}-${{ github.sha }}
