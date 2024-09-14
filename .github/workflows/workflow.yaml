@@ -36,7 +36,6 @@ jobs:
 
       - name: run server
         run: |
-          cd server
           nohup ./start.sh > output.log 2>&1 &
           ./test_server.sh
 #          screen -dmS server ./start.sh
