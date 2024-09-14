@@ -18,8 +18,7 @@ jobs:
 
       - name: remove old jdk
         run: |
-          location=$(which java)
-          sudo rm -rf $location
+          sudo rm -rf /usr/lib/jvm/*
 
       - name: Setup JDK
         run: |
