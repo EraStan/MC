@@ -43,10 +43,12 @@ jobs:
         run: |
           sudo chmod +x server/start.sh
           sudo chmod +x ./test_server.sh
-          sudo bash server/start.sh
+          cd server
+          ./start.sh
           sleep 3
           ss -tnlp
           ps aux | grep fabric-server-launch
+          cd -
           sudo bash test_server.sh
 #          screen -dmS server ./start.sh
 #          screen -ls
