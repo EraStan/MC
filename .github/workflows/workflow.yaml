@@ -34,7 +34,7 @@ jobs:
       - name: run server
         run: |
           cd server
-          sudo bash start.sh
+          sudo timeout -s SIGKILL 100 bash start.sh
 
 
 #      - name: Login in Dockerhub
