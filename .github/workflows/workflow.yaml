@@ -25,6 +25,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openjdk-17-jre-headless
 
+      - name: Setup screen
+        run: sudo apt-get install -y screen
+
       - name: Test jdk
         run: java -version
 
@@ -34,7 +37,9 @@ jobs:
       - name: run server
         run: |
           cd server
-          sudo timeout -s SIGTERM 100 bash start.sh
+          sudo screen -dmS server ./start.sh
+          sleep 100
+          screen -S server -p 0 -X stuff "stop$(printf \\r)"
 
 #      - name: Login in Dockerhub
 #        uses: docker/login-action@v3
