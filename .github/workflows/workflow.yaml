@@ -62,7 +62,7 @@ jobs:
 
       - name: Push to Dockerhub
         uses: docker/build-push-action@v6
-        vars:
+        env:
           java_version: ${{ vars.java_version }}
           server_version: ${{ vars.server_version }}
         with:
