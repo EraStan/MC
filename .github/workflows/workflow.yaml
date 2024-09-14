@@ -62,7 +62,9 @@ jobs:
 
       - name: Push to Dockerhub
         uses: docker/build-push-action@v6
-        run: source env
+        env:
+          java_version: ${{ env.java_version }}
+          server_version: ${{ env.server_version }}
         with:
           build-args:
             - JAVA_VERSION=${java_version}
