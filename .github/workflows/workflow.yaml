@@ -37,7 +37,7 @@ jobs:
       - name: run server
         run: |
           cd server
-          sudo screen -dmS server ./start.sh
+          screen -dmS server ./start.sh
           sleep 100
           screen -S server -p 0 -X stuff "stop$(printf \\r)"
 
