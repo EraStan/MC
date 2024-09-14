@@ -45,15 +45,14 @@ jobs:
           sudo chmod +x ./test_server.sh
           cd server
           nohup ./start.sh > output.log 2>&1 &
-          sleep 3
+          cd -
+
+      - name: test server
+        run: |    
           ss -tnlp
           ps aux | grep fabric-server-launch
-          cd -
           sudo bash test_server.sh
-#          screen -dmS server ./start.sh
-#          screen -ls
-#          sleep 100
-#          screen -S server -p 0 -X stuff "stop$(printf \\r)"
+
 
 #      - name: Login in Dockerhub
 #        uses: docker/login-action@v3
