@@ -43,8 +43,8 @@ jobs:
         run: |
           sudo chmod +x server/start.sh
           sudo chmod +x ./test_server.sh
-          sudo nohup server/start.sh > output.log 2>&1 &
-          sleep 10
+          sudo bash server/start.sh
+          sleep 3
           ss -tnlp
           ps aux | grep fabric-server-launch
           sudo bash test_server.sh
