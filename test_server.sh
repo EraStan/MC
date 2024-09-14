@@ -1,7 +1,7 @@
 #!/bin/bash
 
 start_time=$(date +%s)
-timeout=200
+timeout=100
 
 echo "Starting port check for port 25565 on localhost."
 echo "Timeout is set to $timeout seconds."
