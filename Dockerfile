@@ -1,6 +1,7 @@
 ARG JAVA_VERSION
 FROM ubuntu:22.04
 LABEL authors="Eraes"
+ARG JAVA_VERSION
 RUN apt-get update
 RUN apt-get install -y $JAVA_VERSION
 COPY server/ /server/
