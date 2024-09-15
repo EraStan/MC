@@ -1,4 +1,4 @@
-name: mc server test and then build&push the image to DockeHub
+name: mc server test and then build&push the image to DockerHub
 on:
   push:
     branches:
@@ -6,6 +6,9 @@ on:
 
 permissions:
   contents: write
+
+env:
+  en
 
 jobs:
   test:
@@ -69,4 +72,4 @@ jobs:
           build-args:
             JAVA_VERSION=${java_version}
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:${{ vars.server_version }}-${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:${{ env.server_version }}-${{ github.run_number }}
