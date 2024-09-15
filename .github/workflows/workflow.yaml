@@ -20,8 +20,7 @@ jobs:
       - name: Load .env file
         uses: xom9ikk/dotenv@v2.3.0
         with:
-          path: ./.env
-          mode: development
+          path: .env
           load-mode: strict
 
       - name: test env
