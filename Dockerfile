@@ -1,5 +1,5 @@
 ARG JAVA_VERSION
-FROM ubuntu:22.04
+FROM amd64/debian
 LABEL authors="Eraes"
 ARG JAVA_VERSION
 RUN apt-get update
