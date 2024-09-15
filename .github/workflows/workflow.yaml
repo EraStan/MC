@@ -17,14 +17,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: dotenv
-        id: dotenv
-        uses: ./.github/actions/dotenv-action
+      - name: Load .env file
+        uses: xom9ikk/dotenv@v2.3.0
+        with:
+          path: ./.env
+          mode: development
+          load-mode: strict
 
       - name: test env
         run: |
-          echo "JAVA_VERSION=${{ steps.dotenv.outputs.JAVA_VERSION }}"
-          echo "SERVER_VERSION=${{ steps.dotenv.outputs.SERVER_VERSION }}"
+          echo "JAVA_VERSION=${{ env.JAVA_VERSION }}"
+          echo "SERVER_VERSION=${{ env.SERVER_VERSION }}"
 
 #      - name: remove old jdk
 #        run: |
