@@ -6,5 +6,6 @@ RUN apt-get update && \
 COPY server/ /server/
 COPY configs/* /server/
 WORKDIR /server
+RUN chmod +x start.sh
 CMD ["./start.sh"]
 EXPOSE 25565
