@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mc-server
+  namespace: minecraft
+  labels:
+    app: mc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mc-server
+  template:
+    metadata:
+      labels:
+        app: mc-server
+    spec:
+      containers:
+        - name: mc-server
+          image: suzcuser/mc-server:1.19.1
+          ports:
+            - containerPort: 25565
