@@ -39,11 +39,6 @@ jobs:
       - name: Copy config files
         run: cp -r ./configs/* ./server/
 
-      - name: pwd&&ll
-        run: |
-          pwd
-          ls -l
-
       - name: run server
         run: |
           sudo chmod +x server/start.sh
