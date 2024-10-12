@@ -79,4 +79,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add ./deployment/mc-server.yaml
           git commit -m "Update image to ${IMAGE_NAME}"
-          git push origin update-deployment
+          git push
