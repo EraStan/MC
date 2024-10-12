@@ -66,3 +66,18 @@ jobs:
             JAVA_VERSION=${{ env.JAVA_VERSION }}
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/mc-server:${{ env.SERVER_VERSION }}-${{ github.run_number }}
+
+      - name: Update mc-server.yaml with new image
+        run: |
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/mc-server:${{ env.SERVER_VERSION }}-${{ github.run_number }}
+          sed -i "s|image: .*|image: ${IMAGE_NAME}|g" ./deployment/mc-server.yaml
+
+      - name: Chetout to commit and push
+        run: |
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/mc-server:${{ env.SERVER_VERSION }}-${{ github.run_number }}
+          git config --local user.email "suzcuser@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout -b update-deployment
+          git add ./deployment/mc-server.yaml
+          git commit -m "Update image to ${IMAGE_NAME}"
+          git push origin update-deployment
