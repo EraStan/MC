@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: mc-server
-          image: suzcuser/mc-server:VERSION
+          image: suzcuser/mc-server:1.19.1-59
           ports:
             - containerPort: 25565
