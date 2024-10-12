@@ -77,7 +77,6 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/mc-server:${{ env.SERVER_VERSION }}-${{ github.run_number }}
           git config --local user.email "suzcuser@github.com"
           git config --local user.name "GitHub Action"
-          git checkout -b update-deployment
           git add ./deployment/mc-server.yaml
           git commit -m "Update image to ${IMAGE_NAME}"
           git push origin update-deployment
